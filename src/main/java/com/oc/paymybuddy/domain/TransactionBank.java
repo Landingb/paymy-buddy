@@ -12,7 +12,7 @@ import java.util.Currency;
 
 @Entity
 @Table(name = "transactions_bank")
-public class BankTransaction {
+public class TransactionBank {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

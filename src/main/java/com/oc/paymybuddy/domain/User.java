@@ -62,7 +62,7 @@ public class User {
 	@OneToMany(mappedBy = "user", //mappedBy indicates the entity BankTransaction owns the relationship
 			fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<BankTransaction> banktransactions;
+    private Set<TransactionBank> banktransactions;
 	
 	@OneToMany(mappedBy = "userSource", //mappedBy indicates the entity UserTransaction owns the relationship
 			fetch = FetchType.LAZY,
@@ -183,11 +183,11 @@ public class User {
 		this.connections = connections;
 	}
 
-	public Set<BankTransaction> getBanktransactions() {
+	public Set<TransactionBank> getBanktransactions() {
 		return banktransactions;
 	}
 
-	public void setBanktransactions(Set<BankTransaction> banktransactions) {
+	public void setBanktransactions(Set<TransactionBank> banktransactions) {
 		this.banktransactions = banktransactions;
 	}
 
