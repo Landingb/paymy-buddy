@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Currency;
 
 
-public class BankTransactionForm {
+public class TransactionBankForm {
 	
 	@NotBlank
 	private String getOrSendRadioOptions;

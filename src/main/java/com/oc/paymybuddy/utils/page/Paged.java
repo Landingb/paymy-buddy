@@ -8,4 +8,6 @@ public class Paged<T> {
     private Page<T> page;
 
 
+    public Paged(Page<T> page, Paging of) {
+    }
 }
