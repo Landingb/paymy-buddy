@@ -1,7 +1,6 @@
-package com.oc.paymybuddy.services;
+package com.oc.paymybuddy.service.impl;
 
 import com.oc.paymybuddy.domain.Role;
-import com.oc.paymybuddy.domain.User;
 import com.oc.paymybuddy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,17 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
-public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService{
+    
+	@Autowired
     private UserRepository userRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
-        if(user == null) throw new UsernameNotFoundException(email);
+    public UserDetails loadUserByUsername(String email) {
+        com.oc.paymybuddy.domain.User user = userRepository.findByEmail(email);
+        if (user == null) throw new UsernameNotFoundException(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()){

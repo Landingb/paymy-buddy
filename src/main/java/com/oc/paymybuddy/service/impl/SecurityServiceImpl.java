@@ -1,5 +1,7 @@
-package com.oc.paymybuddy.services;
+package com.oc.paymybuddy.service.impl;
 
+
+import com.oc.paymybuddy.service.interfaces.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class SecurityServiceImpl implements SecurityService {
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -23,7 +26,6 @@ public class SecurityServiceImpl implements SecurityService {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
-    @Override
     public boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null ) {
@@ -34,7 +36,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void autoLogin(String username, String password) {
-        logger.debug("SecurityServiceImpl.autoLogin(Username={},password={})",username,password);
+    	logger.debug("SecurityServiceImpl.autoLogin(Username={},password={})",username,password);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
@@ -42,10 +44,10 @@ public class SecurityServiceImpl implements SecurityService {
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.debug("Auto login {} success!", username);
+            logger.debug("Auto login {} successfully!", username);
         }
     }
-
+    
     @Override
     public String getCurrentUserDetailsUserName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -56,5 +58,11 @@ public class SecurityServiceImpl implements SecurityService {
             }
         }
         return null;
+
     }
+    
+    
+    
+    
+    
 }
