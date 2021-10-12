@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	
+
 	public User findByEmail(String email);
 
 	@Query("SELECT CASE "
@@ -18,13 +18,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ " ELSE false END "
 			+ "FROM User u "
 			+ "WHERE u.email = :email")
-    public Boolean existsByEmail(@Param("email") String email);
-	
-	@Query(value = 
+	public Boolean existsByEmail(@Param("email") String email);
+
+	@Query(value =
 			"SELECT * "
-			+ "FROM user u INNER JOIN user_connections ucon "
-			+ "ON u.id = ucon.connection_id "
-			+ "WHERE ucon.user_id = :id",
+					+ "FROM user u INNER JOIN user_connections ucon "
+					+ "ON u.id = ucon.connection_id "
+					+ "WHERE ucon.user_id = :id",
 			nativeQuery = true)
 	public Page<User> findConnectionById(@Param("id") Long id, Pageable pageRequest);
 

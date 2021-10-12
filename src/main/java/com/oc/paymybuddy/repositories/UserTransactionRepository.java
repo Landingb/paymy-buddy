@@ -7,22 +7,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-/**
- * Spring Data JPA Repository for UserTransaction
- *
- *
- */
 
 
-public interface UserTransactionRepository  extends JpaRepository<Transaction, Long> {
-	
 
-	@Query(value = 
+public interface UserTransactionRepository  extends JpaRepository<Transaction, Long>{
+
+
+	@Query(value =
 			"SELECT * "
-			+ "FROM transactions_user "
-			+ "WHERE usersource_id = :usersourceid OR userdestination_id = :usersourceid "
+					+ "FROM transactions_user "
+					+ "WHERE usersource_id = :usersourceid OR userdestination_id = :usersourceid "
 			,
 			nativeQuery = true)
 	public Page<Transaction> findUserTransactionByUserId(@Param("usersourceid") Long usersourceid, Pageable pageRequest);
-	
+
 }
+
