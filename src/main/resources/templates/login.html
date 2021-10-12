@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login page</title>
+
+
+    <link rel="stylesheet" href="paymy-buddy/src/main/resources/static/css/login.css"/>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/5287b15aba.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<section layout:ragment="content">
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100" style="margin-top: 50px;">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <button style="border: none; background-color: #85BC61;" type="button"
+                                class="btn btn-success">Pay My
+                            Buddy</button>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                        credential not correct
+                    </div>
+                    <form method="POST" th:action="@{/login}">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-envelope-o"
+                                                                      aria-hidden="true"></i></span>
+                            </div>
+                            <div class="custom-file">
+                                <input class="form-control form-control-lg" placeholder="Email" name="username"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">*</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="password" class="form-control form-control-lg" placeholder="Password" name="password"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox" style="text-align: center;">
+                                <input type="checkbox" checked class="custom-control-input"
+                                       id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">Remember me</label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="login_container"> <button type="submit"
+                                                                  style="width: 120px;border: none; background-color: #3273D1;"
+                                                                  class="btn btn-primary btn-lg">Login</button></div>
+                        </div>
+
+                        <h4 class="text-center">
+                            <a href="/registration">Create an account</a>
+                        </h4>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
