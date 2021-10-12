@@ -1,7 +1,9 @@
-package com.oc.paymybuddy.services;
+package com.oc.paymybuddy.service.interfaces;
+
+
 
 public interface SecurityService {
     boolean isAuthenticated();
     void autoLogin(String username, String password);
-    String getCurrentUserDetailsUserName();
+    public String getCurrentUserDetailsUserName();
 }
