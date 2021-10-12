@@ -1,10 +1,16 @@
 package com.oc.paymybuddy.utils.page;
 
-import lombok.Builder;
+import lombok.*;
+
 
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class PageItem {
+
 
     private PageItemType pageItemType;
 

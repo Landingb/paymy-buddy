@@ -29,6 +29,9 @@ public class UserForm {
 	@NotNull
 	private Currency currency;
 
+	public UserForm() {
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}

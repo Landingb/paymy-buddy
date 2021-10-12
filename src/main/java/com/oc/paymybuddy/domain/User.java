@@ -2,6 +2,9 @@ package com.oc.paymybuddy.domain;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -9,16 +12,14 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Currency;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * Entity object that represents a User.
- *
- *
- */
 
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User {
@@ -33,6 +34,7 @@ public class User {
 	@NotBlank
 	@Email
 	private String email;
+
 	private LocalDateTime inscriptiondatetime;
 	@NotBlank
 	private String password;
@@ -44,30 +46,30 @@ public class User {
 	private BigDecimal amount;
 	@NotNull
 	private Currency currency;
-	
+
 	@ManyToMany //FetchType.LAZY by default
 	@JoinTable(
-			name = "user_roles", 
-			joinColumns = @JoinColumn(name = "users_id"), 
+			name = "user_roles",
+			joinColumns = @JoinColumn(name = "users_id"),
 			inverseJoinColumns = @JoinColumn(name = "roles_id"))
 	private Set<Role> roles;
-	
+
 	@ManyToMany //FetchType.LAZY by default
 	@JoinTable(
-			name = "user_connections", 
-			joinColumns = @JoinColumn(name = "user_id"), 
+			name = "user_connections",
+			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "connection_id"))
 	private Set<User> connections;
-	
+
 	@OneToMany(mappedBy = "user", //mappedBy indicates the entity BankTransaction owns the relationship
 			fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<TransactionBank> banktransactions;
-	
+			cascade = CascadeType.ALL)
+	private Set<BankTransaction> banktransactions;
+
 	@OneToMany(mappedBy = "userSource", //mappedBy indicates the entity UserTransaction owns the relationship
 			fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<Transaction> usertransactions;
+			cascade = CascadeType.ALL)
+	private Set<Transaction> usertransactions;
 
 	@Override
 	public int hashCode() {
@@ -183,11 +185,11 @@ public class User {
 		this.connections = connections;
 	}
 
-	public Set<TransactionBank> getBanktransactions() {
+	public Set<BankTransaction> getBanktransactions() {
 		return banktransactions;
 	}
 
-	public void setBanktransactions(Set<TransactionBank> banktransactions) {
+	public void setBanktransactions(Set<BankTransaction> banktransactions) {
 		this.banktransactions = banktransactions;
 	}
 
@@ -198,4 +200,6 @@ public class User {
 	public void setUsertransactions(Set<Transaction> usertransactions) {
 		this.usertransactions = usertransactions;
 	}
+
+
 }

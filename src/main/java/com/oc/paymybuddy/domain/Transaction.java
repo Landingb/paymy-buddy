@@ -1,8 +1,10 @@
 package com.oc.paymybuddy.domain;
 
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,6 +12,8 @@ import java.util.Currency;
 
 
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "transactions_user")
 public class Transaction {
@@ -31,7 +35,7 @@ public class Transaction {
 	@NotNull
 	private BigDecimal amount;
 	@NotNull
-	private Currency currency;
+	private java.util.Currency currency;
 	@NotNull
 	private BigDecimal fees;
 

@@ -1,27 +1,29 @@
 package com.oc.paymybuddy.domain;
 
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Currency;
 
-
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "transactions_bank")
-public class TransactionBank {
-	
+public class BankTransaction {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
 	@NotNull
 	private String bankaccountnumber;
@@ -33,7 +35,7 @@ public class TransactionBank {
 	private BigDecimal amount;
 
 	@NotNull
-	private Currency currency;
+	private java.util.Currency currency;
 
 	public Long getId() {
 		return id;

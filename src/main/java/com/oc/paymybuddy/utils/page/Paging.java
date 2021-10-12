@@ -1,8 +1,17 @@
 package com.oc.paymybuddy.utils.page;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class Paging {
 
     private static final int PAGINATION_STEP = 3;
@@ -24,6 +33,7 @@ public class Paging {
         }
     }
 
+
     public void last(int totalPages) {
         items.add(PageItem.builder()
                 .active(false)
@@ -37,6 +47,8 @@ public class Paging {
                 .build());
     }
 
+
+
     public void first() {
         items.add(PageItem.builder()
                 .active(true)
@@ -49,6 +61,7 @@ public class Paging {
                 .pageItemType(PageItemType.DOTS)
                 .build());
     }
+
 
 
     public static Paging of(int totalPages, int pageNumber){
@@ -78,6 +91,10 @@ public class Paging {
         return paging;
     }
 
+    public static int getPaginationStep() {
+        return PAGINATION_STEP;
+    }
+
     public boolean isNextEnabled() {
         return nextEnabled;
     }
@@ -100,5 +117,13 @@ public class Paging {
 
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
+    }
+
+    public List<PageItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<PageItem> items) {
+        this.items = items;
     }
 }

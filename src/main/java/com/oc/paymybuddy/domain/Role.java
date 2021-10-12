@@ -2,15 +2,15 @@ package com.oc.paymybuddy.domain;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-/**
- * Entity object that is used by Spring Security for authorizations.
- *
- *
- */
-
-
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {
@@ -34,7 +34,5 @@ public class Role {
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
-
 }
-
 
