@@ -5,7 +5,7 @@ import com.oc.paymybuddy.domain.UserForm;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordEqualityValidator implements ConstraintValidator<PasswordEquality, UserForm> {
+public class PasswordEqualityValidator implements ConstraintValidator<PasswordEquality, UserForm>{
 
     @Override
     public boolean isValid(UserForm userFormDTO, ConstraintValidatorContext context) {

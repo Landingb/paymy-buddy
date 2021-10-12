@@ -12,4 +12,16 @@ public class AmountException extends Exception {
         this.errorCode = errorCode;
         this.defaultMessage = defaultMessage;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public String getDefaultMessage() {
+        return defaultMessage;
+    }
 }
