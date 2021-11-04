@@ -1,7 +1,6 @@
+create database paymybuddy;
 
-
-
-USE `test`;
+use paymybuddy;
 
 
 CREATE TABLE IF NOT EXISTS `role` (
@@ -79,5 +78,9 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
   CONSTRAINT `FK_user_roles_paymybuddy.role` FOREIGN KEY (`roles_id`) REFERENCES `role` (`id`),
   CONSTRAINT `FK_user_roles_paymybuddy.user` FOREIGN KEY (`users_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `user` (`firstname`, `lastname`, `email`, `inscriptionDateTime`, `password`, `enabled`, `bankaccountnumber`, `amount`, `currency`) VALUES
+("Anthony", "Barré", "barre@gmail.com", '2021-10-16', "$2y$10$ykswHhdaWgVH/WsJrphRAOYzD.kuiO9BVQ41OyzojmBA.58gAjUaK", 1, 589323, 0.00, "EUR"),
+("Michael", "Anthony", "anthony@gmail.com", '2021-10-17', "$2y$10$YMKlqX3JKwZgzBSJ45/6J.ywm08PCr.2SxC1jfJ1woR1/9q6FV3iC", 1, 232454, 0.00, "EUR");
 
 
